@@ -10,10 +10,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-// TODO -> menu & mega-ball
-// TODO.menu : 1 - Start game | 2 - Settings | 3 - Exit |
-
-
 public class Board extends JPanel implements ActionListener {
 
     private final int B_WIDTH  = 600;
@@ -49,7 +45,15 @@ public class Board extends JPanel implements ActionListener {
     private static final int FAST = MEDIUM / 2;
     private static final int EXTREMAL = FAST - MEDIUM / 6;
 
+    private static final int BLUE_APPLE_PERIOD = 5; // will appear every 5 times locateApple() called
+    private static int locateAppleCalled = 0;
 
+    private enum Apple {
+        RED, // adds 1 dot
+        BLUE // adds 2 dot
+    }
+
+    private Apple currentApple = Apple.RED;
 
     public Board() {
         initBoard();
@@ -69,7 +73,7 @@ public class Board extends JPanel implements ActionListener {
 
     private void loadImages() {
         head  = ImageLoader.loadImage("src/resources/snake/head.png");
-        body = ImageLoader.loadImage("src/resources/snake/body.png");
+        body  = ImageLoader.loadImage("src/resources/snake/body.png");
         apple = ImageLoader.loadImage("src/resources/apple.png");
     }
 
@@ -77,11 +81,14 @@ public class Board extends JPanel implements ActionListener {
 
         dots = 3;
 
-        locateApple();
-
         int DELAY = MEDIUM;
         timer = new Timer(DELAY, this);
+        Timer appleTimer = new Timer(12 * 1000, e -> checkApple(true));
+
         timer.start();
+        locateApple();
+        appleTimer.start();
+
     }
 
     @Override
@@ -92,7 +99,6 @@ public class Board extends JPanel implements ActionListener {
     }
 
     private void doDrawing(Graphics2D g2) {
-
 
         if (inGame) {
 
@@ -121,13 +127,15 @@ public class Board extends JPanel implements ActionListener {
      * checks if apple was eaten
      * and locate new apple
      */
-    private void checkApple() {
+    private void checkApple(boolean isTimeOut) {
 
         if ((x[0] == apple_x) && (y[0] == apple_y)) {
 
-            dots++;
+            dots += currentApple == Apple.RED ? 1 : 2;
             locateApple();
         }
+
+        else if (isTimeOut) locateApple();
     }
 
     private void move() {
@@ -196,7 +204,18 @@ public class Board extends JPanel implements ActionListener {
      */
     private void locateApple() {
 
-        int RAND_POS = 29;
+        if (locateAppleCalled++ == BLUE_APPLE_PERIOD) {
+            locateAppleCalled = 0;
+            apple = ImageLoader.loadImage("src/resources/blue-apple.png");
+            currentApple = Apple.BLUE;
+
+        }
+        else {
+            apple = ImageLoader.loadImage("src/resources/apple.png");
+            currentApple = Apple.RED;
+        }
+
+        int RAND_POS = 30;
         int r = (int) (Math.random() * RAND_POS);
         apple_x = ((r * DOT_SIZE));
 
@@ -210,7 +229,7 @@ public class Board extends JPanel implements ActionListener {
 
         if (inGame) {
 
-            checkApple();
+            checkApple(false);
             checkCollision();
             if (inGame) move();
         }
