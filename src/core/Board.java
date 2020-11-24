@@ -36,9 +36,20 @@ public class Board extends JPanel implements ActionListener {
     private boolean inGame = true;
 
     private Timer timer;
+
     private Image body;
     private Image apple;
     private Image head;
+
+    /**
+     * speed of snake
+     */
+    private static final int MEDIUM = 120;
+    private static final int SLOW = MEDIUM * 2;
+    private static final int FAST = MEDIUM / 2;
+    private static final int EXTREMAL = FAST - MEDIUM / 6;
+
+
 
     public Board() {
         initBoard();
@@ -68,7 +79,7 @@ public class Board extends JPanel implements ActionListener {
 
         locateApple();
 
-        int DELAY = 120;
+        int DELAY = MEDIUM;
         timer = new Timer(DELAY, this);
         timer.start();
     }
@@ -81,6 +92,7 @@ public class Board extends JPanel implements ActionListener {
     }
 
     private void doDrawing(Graphics2D g2) {
+
 
         if (inGame) {
 
@@ -190,6 +202,7 @@ public class Board extends JPanel implements ActionListener {
 
         r = (int) (Math.random() * RAND_POS);
         apple_y = ((r * DOT_SIZE));
+
     }
 
     @Override
