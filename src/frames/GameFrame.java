@@ -12,7 +12,11 @@ public class GameFrame extends JFrame {
 
     private void initFrame() {
 
-        add(new Board());
+        add(new MenuFrame());
+
+
+
+//        add(new Board());
 
         setResizable(false);
         pack();
