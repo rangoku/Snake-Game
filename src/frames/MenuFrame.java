@@ -1,19 +1,14 @@
 package frames;
 
+import core.Board;
+
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.swing.AbstractAction;
-import javax.swing.ActionMap;
-import javax.swing.InputMap;
-import javax.swing.JPanel;
-import javax.swing.KeyStroke;
+import javax.swing.*;
 
 
 public class MenuFrame extends JPanel {
@@ -25,7 +20,7 @@ public class MenuFrame extends JPanel {
         private MenuItemPainter painter;
         private Map<String, Rectangle> menuBounds;
 
-        public MenuFrame() {
+        public MenuFrame(JFrame frame) {
             setBackground(Color.BLACK);
             painter = new SimpleMenuItemPainter();
             menuItems = new ArrayList<>(25);
@@ -46,9 +41,29 @@ public class MenuFrame extends JPanel {
                             break;
                         }
                     }
-                    if (newItem != null && !newItem.equals(selectMenuItem)) {
+
+                    if (newItem != null) {
                         selectMenuItem = newItem;
-                        repaint();
+                        System.out.println("smi: " + selectMenuItem);
+                        switch (selectMenuItem) {
+                            case "Start Game":
+                                System.out.println(1);
+                                MenuFrame.this.setVisible(false);
+                                frame.add(new Board());
+                                MenuFrame.this.transferFocus();
+                                break;
+
+                            case "Options":
+                                MenuFrame.this.setVisible(false);
+                                break;
+
+                            case "Exit":
+                                System.exit(0);
+
+                            default:
+                                repaint();
+                                break;
+                        }
                     }
                 }
 
