@@ -2,7 +2,10 @@ package frames;
 
 import core.Board;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class GameOverFrame {
 
@@ -21,5 +24,25 @@ public class GameOverFrame {
         g2.setFont(font);
         g2.drawString(msg, (game.getWidth() - metrics.stringWidth(msg)) / 2, game.getHeight() / 2);
 
+        game.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                game.removeAll();
+                game.setVisible(false);
+                (JFrame.getFrames())[0].add(new MenuFrame((JFrame)JFrame.getFrames()[0]));
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) { }
+
+            @Override
+            public void mouseReleased(MouseEvent e) { }
+
+            @Override
+            public void mouseEntered(MouseEvent e) { }
+
+            @Override
+            public void mouseExited(MouseEvent e) { }
+        });
     }
 }
