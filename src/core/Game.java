@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Board extends JPanel implements ActionListener {
+public class Game extends JPanel implements ActionListener {
 
     private final int B_WIDTH  = 600;
     private final int B_HEIGHT = 600;
@@ -29,6 +29,7 @@ public class Board extends JPanel implements ActionListener {
     private boolean inGame = true;
 
     private Timer timer;
+    private Timer appleTimer;
 
     private Image body;
     private Image apple;
@@ -52,7 +53,7 @@ public class Board extends JPanel implements ActionListener {
 
     private Apple currentApple = Apple.RED;
 
-    public Board() {
+    public Game() {
         initBoard();
     }
 
@@ -80,9 +81,9 @@ public class Board extends JPanel implements ActionListener {
 
         dots = 3;
 
-        int DELAY = MEDIUM;
+        int DELAY = EXTREMAL;
         timer = new Timer(DELAY, this);
-        Timer appleTimer = new Timer(20 * 1000, e -> checkApple(true));
+        appleTimer = new Timer(DELAY / 10 * 1000, e -> checkApple(true));
 
         timer.start();
         locateApple();
@@ -131,10 +132,13 @@ public class Board extends JPanel implements ActionListener {
         if ((x[0] == apple_x) && (y[0] == apple_y)) {
 
             dots += currentApple == Apple.RED ? 1 : 2;
+            appleTimer.restart();
             locateApple();
         }
 
-        else if (isTimeOut) locateApple();
+        else if (isTimeOut) {
+            locateApple();
+        }
     }
 
     private void move() {
