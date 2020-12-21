@@ -1,11 +1,8 @@
 package frames;
 
-import core.Game;
 import core.SwingRouter.Router;
 
 import javax.swing.*;
-import java.util.HashMap;
-import java.util.Map;
 
 public class GameFrame extends JFrame {
 

@@ -44,7 +44,7 @@ public class Game extends JPanel implements ActionListener {
     private static final int EXTREMAL = FAST - MEDIUM / 6;
 
     private static final int BLUE_APPLE_PERIOD = 5; // will appear every 5 times locateApple() called
-    private static int locateAppleCalled = 0;
+    private int locateAppleCalled = 0;
 
     private enum Apple {
         RED, // adds 1 dot
