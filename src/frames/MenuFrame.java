@@ -48,12 +48,11 @@ public class MenuFrame extends JPanel {
                         System.out.println("smi: " + selectMenuItem);
                         switch (selectMenuItem) {
                             case "Start Game":
-                                System.out.println(1);
                                 Router.switchFrame(MenuFrame.this, new Game());
                                 break;
 
                             case "Options":
-                                MenuFrame.this.setVisible(false);
+                                Router.switchFrame(MenuFrame.this, new OptionsFrame());
                                 break;
 
                             case "Exit":
