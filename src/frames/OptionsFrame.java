@@ -19,7 +19,7 @@ public class OptionsFrame extends JPanel {
         help.setHorizontalAlignment(SwingConstants.CENTER);
         help.setFont(new Font("default", Font.PLAIN, 22));
 
-        var speed = new JSlider(JSlider.HORIZONTAL, 1, 3, 2);
+        var speed = new JSlider(JSlider.HORIZONTAL, 1, 4, 2);
         speed.setMinorTickSpacing(1);
         speed.setPaintTicks(true);
         speed.setPaintLabels(true);
