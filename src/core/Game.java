@@ -81,7 +81,14 @@ public class Game extends JPanel implements ActionListener {
 
         dots = 3;
 
-        int DELAY = EXTREMAL;
+        int speed;
+
+        if (Globals.speed == 1) speed = SLOW;
+        else if (Globals.speed == 2) speed = MEDIUM;
+        else if (Globals.speed == 3) speed = FAST;
+        else speed = EXTREMAL;
+
+        int DELAY = speed;
         timer = new Timer(DELAY, this);
         appleTimer = new Timer(DELAY / 10 * 1000, e -> checkApple(true));
 
@@ -211,7 +218,6 @@ public class Game extends JPanel implements ActionListener {
             locateAppleCalled = 0;
             apple = ImageLoader.loadImage("src/resources/blue-apple.png");
             currentApple = Apple.BLUE;
-
         }
         else {
             apple = ImageLoader.loadImage("src/resources/apple.png");
