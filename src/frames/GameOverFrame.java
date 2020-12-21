@@ -1,6 +1,7 @@
 package frames;
 
-import core.Board;
+import core.Game;
+import core.SwingRouter.Router;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +14,7 @@ public class GameOverFrame {
      * @param game - frame to change
      * @param g2   - Graphics2D instance to draw in new frame
      */
-    public static void gameOver(Board game, Graphics2D g2) {
+    public static void gameOver(Game game, Graphics2D g2) {
         game.removeAll();
 
         String msg = "Game Over";
@@ -27,9 +28,7 @@ public class GameOverFrame {
         game.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                game.removeAll();
-                game.setVisible(false);
-                (JFrame.getFrames())[0].add(new MenuFrame((JFrame)JFrame.getFrames()[0]));
+                Router.switchFrame(game, new MenuFrame());
             }
 
             @Override

@@ -1,6 +1,7 @@
 package frames;
 
-import core.Board;
+import core.Game;
+import core.SwingRouter.Router;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -20,7 +21,7 @@ public class MenuFrame extends JPanel {
         private MenuItemPainter painter;
         private Map<String, Rectangle> menuBounds;
 
-        public MenuFrame(JFrame frame) {
+        public MenuFrame() {
             setBackground(Color.BLACK);
             painter = new SimpleMenuItemPainter();
             menuItems = new ArrayList<>(25);
@@ -48,9 +49,7 @@ public class MenuFrame extends JPanel {
                         switch (selectMenuItem) {
                             case "Start Game":
                                 System.out.println(1);
-                                MenuFrame.this.setVisible(false);
-                                frame.add(new Board());
-                                MenuFrame.this.transferFocus();
+                                Router.switchFrame(MenuFrame.this, new Game());
                                 break;
 
                             case "Options":

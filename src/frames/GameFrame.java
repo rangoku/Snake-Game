@@ -1,8 +1,11 @@
 package frames;
 
-import core.Board;
+import core.Game;
+import core.SwingRouter.Router;
 
 import javax.swing.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GameFrame extends JFrame {
 
@@ -12,11 +15,9 @@ public class GameFrame extends JFrame {
 
     private void initFrame() {
 
-        add(new MenuFrame());
+       Router.setMainFrame(this);
 
-
-
-//        add(new Board());
+       add(new MenuFrame());
 
         setResizable(false);
         pack();
