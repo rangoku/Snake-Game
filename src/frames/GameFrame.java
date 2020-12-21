@@ -12,13 +12,13 @@ public class GameFrame extends JFrame {
 
     private void initFrame() {
 
-       Router.setMainFrame(this);
+        Router.setMainFrame(this); // set current frame as main to work with him in future
 
-       add(new MenuFrame());
+        add(new MenuFrame()); // starts from menu
 
         setResizable(false);
         pack();
-        
+
         setTitle("Snake Game");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
