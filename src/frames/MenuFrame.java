@@ -1,10 +1,7 @@
 package frames;
 
 import core.Game;
-import core.Globals;
-import core.Options;
 import core.SwingRouter.Router;
-import utils.OptionsFile;
 
 import java.awt.*;
 import java.awt.event.*;
