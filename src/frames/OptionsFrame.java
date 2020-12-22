@@ -1,9 +1,7 @@
 package frames;
 
 import core.Globals;
-import core.Options;
 import core.SwingRouter.Router;
-import utils.OptionsFile;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,7 +34,6 @@ public class OptionsFrame extends JPanel {
         confirm.addActionListener(e -> {
             Globals.speed = speed.getValue();
             Router.switchFrame(this, new MenuFrame());
-            System.out.println(Globals.speed);
         });
 
         add(help, BorderLayout.NORTH);
