@@ -1,7 +1,10 @@
 package frames;
 
 import core.Game;
+import core.Globals;
+import core.Options;
 import core.SwingRouter.Router;
+import utils.OptionsFile;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -56,7 +59,8 @@ public class MenuFrame extends JPanel {
                                 break;
 
                             case "Exit":
-                                System.exit(0);
+                                Router.getMainFrame().dispatchEvent(new WindowEvent(Router.getMainFrame(),
+                                        WindowEvent.WINDOW_CLOSING));
 
                             default:
                                 repaint();

@@ -1,7 +1,9 @@
 package frames;
 
 import core.Globals;
+import core.Options;
 import core.SwingRouter.Router;
+import utils.OptionsFile;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,6 +22,7 @@ public class OptionsFrame extends JPanel {
         help.setFont(new Font("default", Font.PLAIN, 22));
 
         var speed = new JSlider(JSlider.HORIZONTAL, 1, 4, 2);
+        speed.setValue(Globals.speed);
         speed.setMinorTickSpacing(1);
         speed.setPaintTicks(true);
         speed.setPaintLabels(true);
