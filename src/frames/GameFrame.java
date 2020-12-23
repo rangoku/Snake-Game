@@ -20,6 +20,8 @@ public class GameFrame extends JFrame {
 
         Router.setMainFrame(this); // set current frame as main to work with him in future
 
+        AudioPlayer.init();
+
         // get saved options
         Options fromFile = OptionsFile.deserialize();
         Globals.Options.speed = fromFile == null ? Globals.Options.speed : fromFile.getSpeed();
