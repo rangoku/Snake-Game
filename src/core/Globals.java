@@ -9,7 +9,7 @@ public class Globals {
 
     public static class Config {
         public static final String optionsFile = "src/data/options.dat";
-        public static final String audioFile = "src/resources/music.wav";
+        public static final String audioFile = "src/resources/music/music.wav";
     }
 
 }
