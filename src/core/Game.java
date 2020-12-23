@@ -5,7 +5,10 @@ import utils.ImageLoader;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Game extends JPanel implements ActionListener {
 
@@ -83,9 +86,9 @@ public class Game extends JPanel implements ActionListener {
 
         int speed;
 
-        if (Globals.speed == 1) speed = SLOW;
-        else if (Globals.speed == 2) speed = MEDIUM;
-        else if (Globals.speed == 3) speed = FAST;
+        if (Globals.Options.speed == 1) speed = SLOW;
+        else if (Globals.Options.speed == 2) speed = MEDIUM;
+        else if (Globals.Options.speed == 3) speed = FAST;
         else speed = EXTREMAL;
 
         int DELAY = speed;
