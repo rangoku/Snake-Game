@@ -10,7 +10,7 @@ import java.io.ObjectOutputStream;
 
 public class OptionsFile {
     public static void serialize(Options options) {
-        try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(Globals.optionsFile))) {
+        try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(Globals.Config.optionsFile))) {
             os.writeObject(options);
         }
         catch (Exception e) {
@@ -18,7 +18,7 @@ public class OptionsFile {
         }
     }
     public static Options deserialize() {
-        try (ObjectInputStream oi = new ObjectInputStream(new FileInputStream(Globals.optionsFile))) {
+        try (ObjectInputStream oi = new ObjectInputStream(new FileInputStream(Globals.Config.optionsFile))) {
             return (Options)oi.readObject();
         }
         catch (Exception e) {

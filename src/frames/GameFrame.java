@@ -3,6 +3,7 @@ package frames;
 import core.Globals;
 import core.Options;
 import core.SwingRouter.Router;
+import utils.AudioPlayer;
 import utils.OptionsFile;
 
 import javax.swing.*;
@@ -19,13 +20,19 @@ public class GameFrame extends JFrame {
 
         Router.setMainFrame(this); // set current frame as main to work with him in future
 
+        // get saved options
         Options fromFile = OptionsFile.deserialize();
-        Globals.speed = fromFile == null ? Globals.speed : fromFile.getSpeed();
+        Globals.Options.speed = fromFile == null ? Globals.Options.speed : fromFile.getSpeed();
+        Globals.Options.isAudioMuted = fromFile == null ? Globals.Options.isAudioMuted : fromFile.isAudioMuted();
+
+        if (!Globals.Options.isAudioMuted) {
+            AudioPlayer.play();
+        }
 
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                OptionsFile.serialize(new Options(Globals.speed));
+                OptionsFile.serialize(new Options(Globals.Options.speed, Globals.Options.isAudioMuted));
             }
         });
 
