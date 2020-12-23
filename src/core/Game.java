@@ -219,11 +219,11 @@ public class Game extends JPanel implements ActionListener {
 
         if (locateAppleCalled++ == BLUE_APPLE_PERIOD) {
             locateAppleCalled = 0;
-            apple = ImageLoader.loadImage("src/resources/blue-apple.png");
+            apple = ImageLoader.loadImage("src/resources/apples/blue-apple.png");
             currentApple = Apple.BLUE;
         }
         else {
-            apple = ImageLoader.loadImage("src/resources/apple.png");
+            apple = ImageLoader.loadImage("src/resources/apples/apple.png");
             currentApple = Apple.RED;
         }
 
