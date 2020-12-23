@@ -14,6 +14,8 @@ public class AudioPlayer {
     private static Clip clip;
     private static AudioInputStream audioInputStream;
 
+    // inits AudioPlayer
+    // needs to be called first
     public static void init() {
         try {
             audioInputStream =
