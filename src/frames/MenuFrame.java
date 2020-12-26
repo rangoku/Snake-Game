@@ -26,6 +26,7 @@ public class MenuFrame extends JPanel {
             painter = new SimpleMenuItemPainter();
             menuItems = new ArrayList<>(3);
             menuItems.add("Start Game");
+            menuItems.add("Achievements");
             menuItems.add("Options");
             menuItems.add("Exit");
             selectMenuItem = menuItems.get(0);
@@ -49,6 +50,10 @@ public class MenuFrame extends JPanel {
                         switch (selectMenuItem) {
                             case "Start Game":
                                 Router.switchFrame(MenuFrame.this, new Game());
+                                break;
+
+                            case "Achievements":
+                                Router.switchFrame(MenuFrame.this, new AchievementsFrame());
                                 break;
 
                             case "Options":
