@@ -1,6 +1,7 @@
 package frames;
 
 import core.Globals;
+import serializable.Achievements;
 import serializable.Options;
 import core.SwingRouter.Router;
 import utils.AudioPlayer;
@@ -34,8 +35,11 @@ public class GameFrame extends JFrame {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
+                //save data
                 Serializer.serialize(new Options(Globals.Options.speed, Globals.Options.isAudioMuted),
                         Globals.Config.optionsFile);
+                Serializer.serialize(new Achievements(Globals.Achievements.score),
+                        Globals.Config.achievementsFile);
             }
         });
 

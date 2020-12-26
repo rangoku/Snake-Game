@@ -12,13 +12,20 @@ public class Globals {
         }
     }
 
+    public static class Achievements {
+        public static int score;
+
+        public static void setAchievements(serializable.Achievements a) {
+            score = a == null ? 0 : a.getScore();
+        }
+    }
+
     public static class Config {
         public static final String optionsFile = "src/data/options.dat";
         public static final String audioFile = "src/resources/music/music.wav";
+        public static final String achievementsFile = "src/data/achievements.dat";
     }
 
-    public static class Achievements {
-        public static int score;
-    }
+
 
 }
