@@ -4,7 +4,7 @@ import core.Globals;
 import serializable.Options;
 import core.SwingRouter.Router;
 import utils.AudioPlayer;
-import utils.OptionsFile;
+import utils.Serializer;
 
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
@@ -25,7 +25,7 @@ public class GameFrame extends JFrame {
         AudioPlayer.init();
 
         // get saved options
-        Globals.Options.setOptions(OptionsFile.deserialize());
+        Globals.Options.setOptions(Serializer.deserialize(Globals.Config.optionsFile));
 
         if (!Globals.Options.isAudioMuted) {
             AudioPlayer.play();
@@ -34,7 +34,8 @@ public class GameFrame extends JFrame {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                OptionsFile.serialize(new Options(Globals.Options.speed, Globals.Options.isAudioMuted));
+                Serializer.serialize(new Options(Globals.Options.speed, Globals.Options.isAudioMuted),
+                        Globals.Config.optionsFile);
             }
         });
 
