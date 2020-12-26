@@ -1,5 +1,6 @@
 package core;
 
+import core.SwingRouter.Router;
 import frames.GameOverFrame;
 import utils.ImageLoader;
 
@@ -62,7 +63,8 @@ public class Game extends JPanel implements ActionListener {
 
     private void initBoard() {
 
-        requestFocus();
+        Router.getMainFrame().setTitle("Snake game : " + 3 + " Best : " +
+                Globals.Achievements.score);
 
         setBackground(Color.black);
         setFocusable(true);
@@ -130,6 +132,8 @@ public class Game extends JPanel implements ActionListener {
     }
 
     private void gameOver(Graphics2D g2) {
+        if (dots > Globals.Achievements.score)
+            Globals.Achievements.score = dots;
         GameOverFrame.gameOver(this, g2);
     }
 
@@ -144,6 +148,8 @@ public class Game extends JPanel implements ActionListener {
             dots += currentApple == Apple.RED ? 1 : 2;
             appleTimer.restart();
             locateApple();
+            Router.getMainFrame().setTitle("Snake game : " + dots + " Best : " +
+                    Globals.Achievements.score);
         }
 
         else if (isTimeOut) {
