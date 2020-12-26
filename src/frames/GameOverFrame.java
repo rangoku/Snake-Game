@@ -27,6 +27,7 @@ public class GameOverFrame {
         game.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                Router.getMainFrame().setTitle("Snake game");
                 Router.switchFrame(game, new MenuFrame());
             }
 
