@@ -25,8 +25,9 @@ public class GameFrame extends JFrame {
         // init audio player
         AudioPlayer.init();
 
-        // get saved options
+        // get saved data
         Globals.Options.setOptions(Serializer.deserialize(Globals.Config.optionsFile));
+        Globals.Achievements.setAchievements(Serializer.deserialize(Globals.Config.achievementsFile));
 
         if (!Globals.Options.isAudioMuted) {
             AudioPlayer.play();
