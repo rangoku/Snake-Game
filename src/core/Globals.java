@@ -5,6 +5,11 @@ public class Globals {
     public static class Options {
         public static int speed = 2; // 1 - Slow; 2 - Medium; 3 - Fast; 4 - Extremal
         public static boolean isAudioMuted = false;
+
+        public static void setOptions(core.Options o) {
+            speed = o == null ? speed : o.getSpeed();
+            isAudioMuted = o == null ? isAudioMuted : o.isAudioMuted();
+        }
     }
 
     public static class Config {

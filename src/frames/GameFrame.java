@@ -18,14 +18,14 @@ public class GameFrame extends JFrame {
 
     private void initFrame() {
 
-        Router.setMainFrame(this); // set current frame as main to work with him in future
+        // set current frame as main to work with it later
+        Router.setMainFrame(this);
 
+        // init audio player
         AudioPlayer.init();
 
         // get saved options
-        Options fromFile = OptionsFile.deserialize();
-        Globals.Options.speed = fromFile == null ? Globals.Options.speed : fromFile.getSpeed();
-        Globals.Options.isAudioMuted = fromFile == null ? Globals.Options.isAudioMuted : fromFile.isAudioMuted();
+        Globals.Options.setOptions(OptionsFile.deserialize());
 
         if (!Globals.Options.isAudioMuted) {
             AudioPlayer.play();
