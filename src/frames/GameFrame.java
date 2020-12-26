@@ -1,7 +1,7 @@
 package frames;
 
 import core.Globals;
-import core.Options;
+import serializable.Options;
 import core.SwingRouter.Router;
 import utils.AudioPlayer;
 import utils.OptionsFile;

@@ -1,7 +1,7 @@
 package utils;
 
 import core.Globals;
-import core.Options;
+import serializable.Options;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

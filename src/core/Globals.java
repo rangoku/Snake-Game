@@ -6,7 +6,7 @@ public class Globals {
         public static int speed = 2; // 1 - Slow; 2 - Medium; 3 - Fast; 4 - Extremal
         public static boolean isAudioMuted = false;
 
-        public static void setOptions(core.Options o) {
+        public static void setOptions(serializable.Options o) {
             speed = o == null ? speed : o.getSpeed();
             isAudioMuted = o == null ? isAudioMuted : o.isAudioMuted();
         }
@@ -15,6 +15,10 @@ public class Globals {
     public static class Config {
         public static final String optionsFile = "src/data/options.dat";
         public static final String audioFile = "src/resources/music/music.wav";
+    }
+
+    public static class Achievements {
+        public static int score;
     }
 
 }

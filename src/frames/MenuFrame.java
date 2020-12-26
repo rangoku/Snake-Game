@@ -3,13 +3,13 @@ package frames;
 import core.Game;
 import core.SwingRouter.Router;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.swing.*;
 
 
 public class MenuFrame extends JPanel {
@@ -24,7 +24,7 @@ public class MenuFrame extends JPanel {
         public MenuFrame() {
             setBackground(Color.BLACK);
             painter = new SimpleMenuItemPainter();
-            menuItems = new ArrayList<>(25);
+            menuItems = new ArrayList<>(3);
             menuItems.add("Start Game");
             menuItems.add("Options");
             menuItems.add("Exit");
@@ -90,8 +90,10 @@ public class MenuFrame extends JPanel {
             im.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), "arrowDown");
             im.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), "arrowUp");
 
+
             am.put("arrowDown", new MenuAction(1));
             am.put("arrowUp", new MenuAction(-1));
+
 
         }
 
